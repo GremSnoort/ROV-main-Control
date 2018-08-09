@@ -1,0 +1,12 @@
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/thirdpaty/opencv/build/x64/vc15/lib/ -lopencv_world340
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/thirdpaty/opencv/build/x64/vc15/lib/ -lopencv_world340d
+else:unix: LIBS += -L$$PWD/thirdpaty/opencv/build/x64/vc15/lib/ -lopencv_world340
+
+INCLUDEPATH += $$PWD/thirdpaty/opencv/build/include
+DEPENDPATH += $$PWD/thirdpaty/opencv/build/include
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/thirdpaty/opencv/build/x64/vc15/lib/libopencv_world340.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/thirdpaty/opencv/build/x64/vc15/lib/libopencv_world340d.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/thirdpaty/opencv/build/x64/vc15/lib/opencv_world340.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/thirdpaty/opencv/build/x64/vc15/lib/opencv_world340d.lib
+else:unix: PRE_TARGETDEPS += $$PWD/thirdpaty/opencv/build/x64/vc15/lib/libopencv_world340.a
